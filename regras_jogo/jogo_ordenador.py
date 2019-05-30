@@ -1,13 +1,7 @@
 from regras_jogo.regras_abstratas import AbstractRegrasJogo
 from enum import Enum, auto
 
-qtdQuadradosLargura = 8
-quadradoLado = 30
-qtdQuadradosAltura = 10
-largura = quadradoLado * qtdQuadradosLargura
-altura = quadradoLado * qtdQuadradosAltura
-indice = 0
-listaPecas = []
+
 
 
 class AgentesOrdenador(Enum):
@@ -18,18 +12,11 @@ class JogoOrdenador(AbstractRegrasJogo):
 
     def __init__(self, qtde_elems, a_seed=None):
         from random import randint, seed
-        from tkinter import Tk, Canvas
+
         seed(a_seed)
         self.elementos = [randint(1, qtde_elems*3) for _ in range(qtde_elems)]
 
-        """NOSSO JOGO COMEÇA ABAIXO DAQUI"""
-
-       
-        self.window = Tk()
-        self.canvas = Canvas(self.window, width=largura,
-                             height=altura, bg='black')
-        self.canvas.pack()
-
+    
     def registrarAgenteJogador(self, elem_agente=AgentesOrdenador.JOGADOR_PADRAO):
         """ Só há um agente, o jogador, então não preciso de lógica.
         """

@@ -1,3 +1,12 @@
+
+qtdQuadradosLargura = 8
+quadradoLado = 30
+qtdQuadradosAltura = 10
+largura = quadradoLado * qtdQuadradosLargura
+altura = quadradoLado * qtdQuadradosAltura
+indice = 0
+listaPecas = []
+
 from agentes.abstrato import AgenteAbstrato
 class AgentePrepostoESHumano(AgenteAbstrato):
     
@@ -9,6 +18,12 @@ class AgentePrepostoESHumano(AgenteAbstrato):
         guia_indices = f'i- {",".join(f"{i:2d}" for i in range(len(elems_dipostos)))}'
         elems = f'e| {",".join(f"{e:2d}" for e in elems_dipostos)}'
 
+        from tkinter import Tk, Canvas
+               
+        self.window = Tk()
+        self.canvas = Canvas(self.window, width=largura,
+                             height=altura, bg='black')
+        self.canvas.pack()
         print(guia_indices, elems, '-'*len(elems), sep='\n')
     
     def escolherProximaAcao(self):
