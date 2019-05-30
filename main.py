@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
+
 import time
-from regras_jogo import construir_jogo
-from agentes import construir_agente
+from regras_jogo.regras_abstratas import construir_jogo
+from agentes.abstrato import construir_agente
 
 def ler_tempo(em_turnos=False):
     """ Se o jogo for em turnos, passe 1 (rodada), senão se o jogo for

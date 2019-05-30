@@ -1,13 +1,13 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
-class RegrasJogo(ABC):
+class AbstractRegrasJogo(ABC):
     """ Interface mínima para implementar um jogo interativo e modular. Não
     tente instanciar objetos dessa classe, ela deve ser herdada e seus métodos
     abstratos sobrecarregados.
     """
 
     @abstractmethod
-    def registrarAgenteJogador(self, elem_agente=JOGADOR_PADRAO):
+    def registrarAgenteJogador(self, elem_agente):
         """ Cria ou recupera id de um elemento de jogo agente.
         """
         return
@@ -45,7 +45,8 @@ class RegrasJogo(ABC):
         return
 
 def construir_jogo(*args,**kwargs):
-    """ Método factory para uma instância Regras arbitrária, de acordo com os
+    """ Método factory para uma instância RegrasJogo arbitrária, de acordo com os
     parâmetros. Pode-se mudar à vontade a assinatura do método.
     """
-    pass
+    from regras_jogo.jogo_ordenador import JogoOrdenador
+    return JogoOrdenador(kwargs.get('qtde_colunas',10))
