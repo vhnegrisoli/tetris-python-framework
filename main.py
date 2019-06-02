@@ -23,17 +23,6 @@ def iniciar_jogo():
         # Mostrar mundo ao jogador
         ambiente_perceptivel = jogo.gerarCampoVisao(id_jogador)
         jogador.adquirirPercepcao(ambiente_perceptivel)
-
-        # O delete('All') está especificando que a cada vez que a peça descer pela grade, a
-        # renderização do bloco anterior, e o anterior a este, serão deletados, ficando apenas a principal.
-        self.canvas.delete('all')
-
-        self.desenha()
-
-        self.canvas.after(50)
-        self.window.update_idletasks()
-        self.window.update()
-
         
         # Decidir jogada e apresentar ao jogo
         acao = jogador.escolherProximaAcao()
